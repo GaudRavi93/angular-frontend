@@ -3,7 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  hosts: [
+    { prefix: '/api', target: 'add your API url here' },
+  ],
+  firebaseConfig: {
+    // add firebase config for test environment
+  },
 };
 
 /*

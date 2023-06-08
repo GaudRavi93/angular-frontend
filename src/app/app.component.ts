@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
+import { Component, OnInit } from '@angular/core';
+import { SpinnerService } from './shared/services/spinner.service';
 
 @Component({
     selector: 'app-root',
@@ -7,7 +8,10 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
 
-    constructor(private primengConfig: PrimeNGConfig) { }
+    constructor(
+        private primengConfig: PrimeNGConfig,
+        public spinnerService: SpinnerService,
+    ) { }
 
     ngOnInit() {
         this.primengConfig.ripple = true;
