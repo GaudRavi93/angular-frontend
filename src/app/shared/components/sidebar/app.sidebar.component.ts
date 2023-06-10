@@ -1,13 +1,19 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { LayoutService } from '../../services/app.layout.service';
+import { LayoutService } from '../../../application/core/app.layout.service';
 
 @Component({
     selector: 'app-sidebar',
     templateUrl: './app.sidebar.component.html'
 })
+
 export class AppSidebarComponent implements OnInit {
     model: any[] = [];
-    constructor(public layoutService: LayoutService, public el: ElementRef) { }
+
+    constructor(
+        public el: ElementRef,
+        public layoutService: LayoutService
+    ) { }
+
     ngOnInit() {
         this.model = [
             {

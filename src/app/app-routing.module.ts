@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppLayoutComponent } from './shared/components/layout/app.layout.component';
+import { AppLayoutComponent } from './application/core/app.layout.component';
 import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
 
 @NgModule({

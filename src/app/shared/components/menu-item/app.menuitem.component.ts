@@ -1,10 +1,10 @@
-import { ChangeDetectorRef, Component, Host, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
-import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
+import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '../../services/app.menu.service';
-import { LayoutService } from '../../services/app.layout.service';
+import { LayoutService } from '../../../application/core/app.layout.service';
+import { animate, state, style, transition, trigger } from '@angular/animations';
+import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
     // eslint-disable-next-line @angular-eslint/component-selector
@@ -22,25 +22,23 @@ import { LayoutService } from '../../services/app.layout.service';
         ])
     ]
 })
+
 export class AppMenuitemComponent implements OnInit, OnDestroy {
 
+    active = false;
+    key: string = "";
     @Input() item: any;
-
     @Input() index!: number;
-
+    @Input() parentKey!: string;
+    menuResetSubscription: Subscription;
+    menuSourceSubscription: Subscription;
     @Input() @HostBinding('class.layout-root-menuitem') root!: boolean;
 
-    @Input() parentKey!: string;
-
-    active = false;
-
-    menuSourceSubscription: Subscription;
-
-    menuResetSubscription: Subscription;
-
-    key: string = "";
-
-    constructor(public layoutService: LayoutService, private cd: ChangeDetectorRef, public router: Router, private menuService: MenuService) {
+    constructor(
+        public router: Router,
+        private menuService: MenuService,
+        public layoutService: LayoutService
+    ) {
         this.menuSourceSubscription = this.menuService.menuSource$.subscribe(value => {
             Promise.resolve(null).then(() => {
                 if (value.routeEvent) {

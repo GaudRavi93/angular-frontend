@@ -1,7 +1,7 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AppConfig } from '../interface/AppConfig';
-import { LayoutState } from '../interface/LayoutState';
+import { AppConfig } from '../../shared/interface/AppConfig';
+import { LayoutState } from '../../shared/interface/LayoutState';
 
 @Injectable({
     providedIn: 'root',

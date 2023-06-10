@@ -1,23 +1,20 @@
 import { MenuItem } from 'primeng/api';
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { LayoutService } from '../../../application/core/app.layout.service';
 import { AuthService } from '../../../application/auth/services/auth.service';
-import { LayoutService } from '../../services/app.layout.service';
 
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html'
 })
+
 export class AppTopBarComponent {
 
     items!: MenuItem[];
-
     isDarkMode: boolean = false;
-
-    @ViewChild('menubutton') menuButton!: ElementRef;
-
-    @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
-
     @ViewChild('topbarmenu') menu!: ElementRef;
+    @ViewChild('menubutton') menuButton!: ElementRef;
+    @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
 
     constructor(
         public layoutService: LayoutService,
