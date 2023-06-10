@@ -3,7 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { Product } from './interface/Product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardService } from './services/dashboard.service';
-import { LayoutService } from './../../shared/components/layout/service/app.layout.service';
+import { LayoutService } from '../../shared/services/app.layout.service';
 
 @Component({
     templateUrl: './dashboard.component.html'
