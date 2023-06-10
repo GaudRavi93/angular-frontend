@@ -1,7 +1,7 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="layout/dashboard">
-        <img src="assets/layout/images/logo-dark.svg" alt="logo">
-        <span>SAKAI</span>
+        <img src="assets/layout/images/{{layoutService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
+        <span>DI Solutions</span>
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
@@ -13,9 +13,9 @@
     </button>
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
+        <button (click)="toggleTheme()" class="p-link layout-topbar-button">
+            <i [class]="isDarkMode ? 'pi pi-sun' : 'pi pi-moon'"></i>
+            <span>{{isDarkMode ? 'Light mode' : 'Dark mode'}}</span>
         </button>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
