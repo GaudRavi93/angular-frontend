@@ -2,7 +2,7 @@ import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { NavigationEnd, Router } from '@angular/router';
 import { MenuService } from '../../services/app.menu.service';
-import { LayoutService } from '../../../application/core/app.layout.service';
+import { CoreService } from '../../../application/core/services/core.service';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { Component, HostBinding, Input, OnDestroy, OnInit } from '@angular/core';
 
@@ -37,7 +37,7 @@ export class AppMenuitemComponent implements OnInit, OnDestroy {
     constructor(
         public router: Router,
         private menuService: MenuService,
-        public layoutService: LayoutService
+        public coreService: CoreService
     ) {
         this.menuSourceSubscription = this.menuService.menuSource$.subscribe(value => {
             Promise.resolve(null).then(() => {

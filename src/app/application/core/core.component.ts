@@ -1,28 +1,24 @@
-import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
-import { LayoutService } from "./app.layout.service";
+import { CoreService } from "./services/core.service";
+import { NavigationEnd, Router } from '@angular/router';
+import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { AppTopBarComponent } from '../../shared/components/topbar/app.topbar.component';
 import { AppSidebarComponent } from '../../shared/components/sidebar/app.sidebar.component';
 
 @Component({
-    selector: 'app-layout',
-    templateUrl: './app.layout.component.html'
+    selector: 'app-core',
+    templateUrl: './core.component.html'
 })
-export class AppLayoutComponent implements OnDestroy {
-
-    overlayMenuOpenSubscription: Subscription;
+export class CoreComponent implements OnDestroy {
 
     menuOutsideClickListener: any;
-
     profileMenuOutsideClickListener: any;
-
+    overlayMenuOpenSubscription: Subscription;
+    @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
     @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
 
-    @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
-
-    constructor(public layoutService: LayoutService, public renderer: Renderer2, public router: Router) {
-        this.overlayMenuOpenSubscription = this.layoutService.overlayOpen$.subscribe(() => {
+    constructor(public coreService: CoreService, public renderer: Renderer2, public router: Router) {
+        this.overlayMenuOpenSubscription = this.coreService.overlayOpen$.subscribe(() => {
             if (!this.menuOutsideClickListener) {
                 this.menuOutsideClickListener = this.renderer.listen('document', 'click', event => {
                     const isOutsideClicked = !(this.appSidebar.el.nativeElement.isSameNode(event.target) || this.appSidebar.el.nativeElement.contains(event.target) 
@@ -45,7 +41,7 @@ export class AppLayoutComponent implements OnDestroy {
                 });
             }
 
-            if (this.layoutService.state.staticMenuMobileActive) {
+            if (this.coreService.state.staticMenuMobileActive) {
                 this.blockBodyScroll();
             }
         });
@@ -58,9 +54,9 @@ export class AppLayoutComponent implements OnDestroy {
     }
 
     hideMenu() {
-        this.layoutService.state.overlayMenuActive = false;
-        this.layoutService.state.staticMenuMobileActive = false;
-        this.layoutService.state.menuHoverActive = false;
+        this.coreService.state.overlayMenuActive = false;
+        this.coreService.state.staticMenuMobileActive = false;
+        this.coreService.state.menuHoverActive = false;
         if (this.menuOutsideClickListener) {
             this.menuOutsideClickListener();
             this.menuOutsideClickListener = null;
@@ -69,7 +65,7 @@ export class AppLayoutComponent implements OnDestroy {
     }
 
     hideProfileMenu() {
-        this.layoutService.state.profileSidebarVisible = false;
+        this.coreService.state.profileSidebarVisible = false;
         if (this.profileMenuOutsideClickListener) {
             this.profileMenuOutsideClickListener();
             this.profileMenuOutsideClickListener = null;
@@ -97,15 +93,15 @@ export class AppLayoutComponent implements OnDestroy {
 
     get containerClass() {
         return {
-            'layout-theme-light': this.layoutService.config.colorScheme === 'light',
-            'layout-theme-dark': this.layoutService.config.colorScheme === 'dark',
-            'layout-overlay': this.layoutService.config.menuMode === 'overlay',
-            'layout-static': this.layoutService.config.menuMode === 'static',
-            'layout-static-inactive': this.layoutService.state.staticMenuDesktopInactive && this.layoutService.config.menuMode === 'static',
-            'layout-overlay-active': this.layoutService.state.overlayMenuActive,
-            'layout-mobile-active': this.layoutService.state.staticMenuMobileActive,
-            'p-input-filled': this.layoutService.config.inputStyle === 'filled',
-            'p-ripple-disabled': !this.layoutService.config.ripple
+            'layout-theme-light': this.coreService.config.colorScheme === 'light',
+            'layout-theme-dark': this.coreService.config.colorScheme === 'dark',
+            'layout-overlay': this.coreService.config.menuMode === 'overlay',
+            'layout-static': this.coreService.config.menuMode === 'static',
+            'layout-static-inactive': this.coreService.state.staticMenuDesktopInactive && this.coreService.config.menuMode === 'static',
+            'layout-overlay-active': this.coreService.state.overlayMenuActive,
+            'layout-mobile-active': this.coreService.state.staticMenuMobileActive,
+            'p-input-filled': this.coreService.config.inputStyle === 'filled',
+            'p-ripple-disabled': !this.coreService.config.ripple
         }
     }
 

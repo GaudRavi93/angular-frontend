@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
+import { MessageService } from 'primeng/api';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
+import { BrowserModule } from '@angular/platform-browser';
 import { environment } from './../environments/environment';
+import { CoreModule } from './application/core/core.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AppLayoutModule } from './application/core/app.layout.module';
 import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { MessageService } from 'primeng/api';
 
 @NgModule({
     declarations: [
@@ -19,7 +19,7 @@ import { MessageService } from 'primeng/api';
     imports: [
         SharedModule,
         BrowserModule,
-        AppLayoutModule,
+        CoreModule,
         AppRoutingModule,
         AngularFireAuthModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),

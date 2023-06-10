@@ -1,9 +1,9 @@
-import { ToastsService } from './../../../shared/services/toasts.service';
-import { SpinnerService } from './../../../shared/services/spinner.service';
 import { Router } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { LoginDetails } from '../interfaces/LoginDetails';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { ToastsService } from './../../../shared/services/toasts.service';
+import { SpinnerService } from './../../../shared/services/spinner.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { LayoutService } from '../../../application/core/app.layout.service';
+import { CoreService } from '../../../application/core/services/core.service';
 
 @Component({
     selector: 'app-sidebar',
@@ -11,7 +11,7 @@ export class AppSidebarComponent implements OnInit {
 
     constructor(
         public el: ElementRef,
-        public layoutService: LayoutService
+        public coreService: CoreService
     ) { }
 
     ngOnInit() {

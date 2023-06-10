@@ -1,12 +1,12 @@
 import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { AppConfig } from '../../shared/interface/AppConfig';
-import { LayoutState } from '../../shared/interface/LayoutState';
+import { AppConfig } from '../../../shared/interface/AppConfig';
+import { LayoutState } from '../../../shared/interface/LayoutState';
 
 @Injectable({
     providedIn: 'root',
 })
-export class LayoutService {
+export class CoreService {
 
     config: AppConfig = {
         ripple: false,

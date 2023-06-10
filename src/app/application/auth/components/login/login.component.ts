@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { LoginDetails } from '../../interfaces/LoginDetails';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LayoutService } from '../../../core/app.layout.service';
+import { CoreService } from '../../../core/services/core.service';
 
 @Component({
     selector: 'app-login',
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     valCheck: string[] = ['remember'];
 
     constructor(
-        public layoutService: LayoutService,
+        public coreService: CoreService,
         private formBuilder: FormBuilder,
         private authService: AuthService,
     ) { }

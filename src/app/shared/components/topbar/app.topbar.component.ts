@@ -1,6 +1,6 @@
 import { MenuItem } from 'primeng/api';
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { LayoutService } from '../../../application/core/app.layout.service';
+import { CoreService } from '../../../application/core/services/core.service';
 import { AuthService } from '../../../application/auth/services/auth.service';
 
 @Component({
@@ -17,7 +17,7 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
 
     constructor(
-        public layoutService: LayoutService,
+        public coreService: CoreService,
         public authService: AuthService,
     ) { }
 
@@ -26,13 +26,13 @@ export class AppTopBarComponent {
         const theme = this.isDarkMode ? 'lara-dark-indigo' : 'lara-light-indigo';
         const colorScheme = this.isDarkMode ? 'dark' : 'light';
         const themeLink = <HTMLLinkElement>document.getElementById('theme-css');
-        const newHref = themeLink.getAttribute('href')!.replace(this.layoutService.config.theme, theme);
+        const newHref = themeLink.getAttribute('href')!.replace(this.coreService.config.theme, theme);
 
-        this.layoutService.config.colorScheme;
+        this.coreService.config.colorScheme;
         this.replaceThemeLink(newHref, () => {
-            this.layoutService.config.theme = theme;
-            this.layoutService.config.colorScheme = colorScheme;
-            this.layoutService.onConfigUpdate();
+            this.coreService.config.theme = theme;
+            this.coreService.config.colorScheme = colorScheme;
+            this.coreService.onConfigUpdate();
         });
     }
 

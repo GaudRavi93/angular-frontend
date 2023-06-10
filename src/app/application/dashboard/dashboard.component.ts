@@ -3,28 +3,24 @@ import { MenuItem } from 'primeng/api';
 import { Product } from './interface/Product';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DashboardService } from './services/dashboard.service';
-import { LayoutService } from '../core/app.layout.service';
+import { CoreService } from '../core/services/core.service';
 
 @Component({
     templateUrl: './dashboard.component.html'
 })
 export class DashboardComponent implements OnInit, OnDestroy {
 
-    items!: MenuItem[];
-
-    products!: Product[];
-
     chartData: any;
-
     chartOptions: any;
-
+    items!: MenuItem[];
+    products!: Product[];
     subscription!: Subscription;
 
     constructor(
-        private dashboardService: DashboardService,
-        public layoutService: LayoutService
+        public coreService: CoreService,
+        private dashboardService: DashboardService
     ) {
-        this.subscription = this.layoutService.configUpdate$.subscribe(() => {
+        this.subscription = this.coreService.configUpdate$.subscribe(() => {
             this.initChart();
         });
     }

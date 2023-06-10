@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { AppLayoutComponent } from './application/core/app.layout.component';
+import { CoreComponent } from './application/core/core.component';
 import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
 
 @NgModule({
     imports: [
         RouterModule.forRoot([
             {
-                path: 'layout', component: AppLayoutComponent,
+                path: 'layout', component: CoreComponent,
                 children: [
                     { path: '', loadChildren: () => import('./application/dashboard/dashboard.module').then(m => m.DashboardModule) },
                     { path: 'dashboard', loadChildren: () => import('./application/dashboard/dashboard.module').then(m => m.DashboardModule) },

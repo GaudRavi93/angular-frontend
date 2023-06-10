@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LayoutService } from '../../../application/core/app.layout.service';
+import { CoreService } from '../../../application/core/services/core.service';
 
 @Component({
     selector: 'app-footer',
@@ -7,6 +7,6 @@ import { LayoutService } from '../../../application/core/app.layout.service';
 })
 export class AppFooterComponent {
     constructor(
-        public layoutService: LayoutService
+        public coreService: CoreService
     ) { }
 }

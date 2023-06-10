@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard.component';
-import { ChartModule } from 'primeng/chart';
 import { MenuModule } from 'primeng/menu';
 import { TableModule } from 'primeng/table';
+import { ChartModule } from 'primeng/chart';
+import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { StyleClassModule } from 'primeng/styleclass';
+import { CommonModule } from '@angular/common';
 import { PanelMenuModule } from 'primeng/panelmenu';
+import { StyleClassModule } from 'primeng/styleclass';
+import { DashboardComponent } from './dashboard.component';
 import { DashboardsRoutingModule } from './dashboard-routing.module';
 
 @NgModule({
