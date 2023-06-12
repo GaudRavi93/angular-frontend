@@ -1,12 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import { PrimeNgFormsModules } from './primeng-forms-module';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ApiInterceptor } from '../interceptors/api.interceptor';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TokenInterceptor } from '../interceptors/token.interceptor';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 const Modules = [
+    FormsModule,
     ReactiveFormsModule,
     PrimeNgFormsModules
 ];

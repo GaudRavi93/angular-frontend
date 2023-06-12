@@ -1,12 +1,10 @@
-<div class="layout-topbar">
+<div class="layout-topbar layout-topbar-v2">
     <a class="layout-topbar-logo" routerLink="/layout/dashboard">
         <img src="assets/layout/images/{{coreService.config.colorScheme === 'light' ? 'logo-dark' : 'logo-white'}}.svg" alt="logo">
         <span>DI Solutions</span>
     </a>
 
-    <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="coreService.onMenuToggle()">
-        <i class="pi pi-bars"></i>
-    </button>
+    <p-menubar [model]="items"></p-menubar>
 
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="coreService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>

@@ -8,6 +8,12 @@ import { LayoutState } from '../../../shared/interface/LayoutState';
 })
 export class CoreService {
 
+    isDarkMode: boolean = false;
+    private overlayOpen = new Subject<any>();
+    overlayOpen$ = this.overlayOpen.asObservable();
+    private configUpdate = new Subject<AppConfig>();
+    configUpdate$ = this.configUpdate.asObservable();
+
     config: AppConfig = {
         ripple: false,
         inputStyle: 'outlined',
@@ -26,13 +32,6 @@ export class CoreService {
         menuHoverActive: false
     };
 
-    private configUpdate = new Subject<AppConfig>();
-
-    private overlayOpen = new Subject<any>();
-
-    configUpdate$ = this.configUpdate.asObservable();
-
-    overlayOpen$ = this.overlayOpen.asObservable();
 
     onMenuToggle() {
         if (this.isOverlay()) {
@@ -44,8 +43,7 @@ export class CoreService {
 
         if (this.isDesktop()) {
             this.state.staticMenuDesktopInactive = !this.state.staticMenuDesktopInactive;
-        }
-        else {
+        } else {
             this.state.staticMenuMobileActive = !this.state.staticMenuMobileActive;
 
             if (this.state.staticMenuMobileActive) {
@@ -79,6 +77,38 @@ export class CoreService {
 
     onConfigUpdate() {
         this.configUpdate.next(this.config);
+    }
+
+    toggleTheme() {
+        this.isDarkMode = !this.isDarkMode;
+        const theme = this.isDarkMode ? 'lara-dark-indigo' : 'lara-light-indigo';
+        const colorScheme = this.isDarkMode ? 'dark' : 'light';
+        const themeLink = <HTMLLinkElement>document.getElementById('theme-css');
+        const newHref = themeLink.getAttribute('href')!.replace(this.config.theme, theme);
+
+        this.config.colorScheme;
+        this.replaceThemeLink(newHref, () => {
+            this.config.theme = theme;
+            this.config.colorScheme = colorScheme;
+            this.onConfigUpdate();
+        });
+    }
+
+    replaceThemeLink(href: string, onComplete: Function) {
+        const id = 'theme-css';
+        const themeLink = <HTMLLinkElement>document.getElementById('theme-css');
+        const cloneLinkElement = <HTMLLinkElement>themeLink.cloneNode(true);
+
+        cloneLinkElement.setAttribute('href', href);
+        cloneLinkElement.setAttribute('id', id + '-clone');
+
+        themeLink.parentNode!.insertBefore(cloneLinkElement, themeLink.nextSibling);
+
+        cloneLinkElement.addEventListener('load', () => {
+            themeLink.remove();
+            cloneLinkElement.setAttribute('id', id);
+            onComplete();
+        });
     }
 
 }

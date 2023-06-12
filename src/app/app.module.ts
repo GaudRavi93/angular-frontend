@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './application/users/users.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -19,11 +20,12 @@ import { NotfoundComponent } from './application/auth/components/notfound/notfou
         UsersComponent
     ],
     imports: [
+        CoreModule,
         SharedModule,
         BrowserModule,
-        CoreModule,
         AppRoutingModule,
         AngularFireAuthModule,
+        BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
     ],
     providers: [

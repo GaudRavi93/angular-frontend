@@ -1,41 +1,27 @@
 import { NgModule } from '@angular/core';
-import { BadgeModule } from 'primeng/badge';
-import { FormsModule } from '@angular/forms';
-import { RippleModule } from 'primeng/ripple';
 import { RouterModule } from '@angular/router';
-import { SidebarModule } from 'primeng/sidebar';
 import { CoreComponent } from "./core.component";
-import { InputTextModule } from 'primeng/inputtext';
-import { HttpClientModule } from '@angular/common/http';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { InputSwitchModule } from 'primeng/inputswitch';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SharedModule } from 'src/app/shared/modules/shared.module';
 import { AppFooterComponent } from '../../shared/components/footer/app.footer.component';
 import { AppTopBarComponent } from '../../shared/components/topbar/app.topbar.component';
+import { TopbarV2Component } from 'src/app/shared/components/topbar-v2/topbar-v2.component';
 import { AppSidebarComponent } from '../../shared/components/sidebar/app.sidebar.component';
 import { AppMenuitemComponent } from '../../shared/components/menu-item/app.menuitem.component';
 
 @NgModule({
     declarations: [
-        AppMenuitemComponent,
+        CoreComponent,
+        TopbarV2Component,
         AppTopBarComponent,
         AppFooterComponent,
         AppSidebarComponent,
-        CoreComponent,
+        AppMenuitemComponent,
     ],
     imports: [
+        RouterModule,
         BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        BrowserAnimationsModule,
-        InputTextModule,
-        SidebarModule,
-        BadgeModule,
-        RadioButtonModule,
-        InputSwitchModule,
-        RippleModule,
-        RouterModule
+        SharedModule,
     ],
     exports: [CoreComponent]
 })

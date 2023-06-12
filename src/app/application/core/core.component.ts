@@ -4,6 +4,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { Component, OnDestroy, Renderer2, ViewChild } from '@angular/core';
 import { AppTopBarComponent } from '../../shared/components/topbar/app.topbar.component';
 import { AppSidebarComponent } from '../../shared/components/sidebar/app.sidebar.component';
+import { TopbarV2Component } from '../../shared/components/topbar-v2/topbar-v2.component';
 
 @Component({
     selector: 'app-core',
@@ -15,6 +16,8 @@ export class CoreComponent implements OnDestroy {
     profileMenuOutsideClickListener: any;
     overlayMenuOpenSubscription: Subscription;
     @ViewChild(AppTopBarComponent) appTopbar!: AppTopBarComponent;
+    //uncomment below line when use top bar version 2
+    // @ViewChild(TopbarV2Component) appTopbar!: TopbarV2Component;
     @ViewChild(AppSidebarComponent) appSidebar!: AppSidebarComponent;
 
     constructor(public coreService: CoreService, public renderer: Renderer2, public router: Router) {

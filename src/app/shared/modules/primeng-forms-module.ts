@@ -4,6 +4,8 @@ import { ChartModule } from 'primeng/chart';
 import { ToastModule } from 'primeng/toast';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
+import { SidebarModule } from 'primeng/sidebar';
 import { MenubarModule } from 'primeng/menubar';
 import { CalendarModule } from 'primeng/calendar';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -15,16 +17,16 @@ import { RadioButtonModule } from 'primeng/radiobutton';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const PrimeNgModules = [
     MenuModule,
-    FormsModule,
     ToastModule,
     TableModule,
     ChartModule,
     ButtonModule,
+    RippleModule,
     MenubarModule,
+    SidebarModule,
     PasswordModule,
     DropdownModule,
     CheckboxModule,
@@ -35,7 +37,6 @@ const PrimeNgModules = [
     RadioButtonModule,
     MultiSelectModule,
     InputTextareaModule,
-    ReactiveFormsModule,
     ProgressSpinnerModule
 ];
 
