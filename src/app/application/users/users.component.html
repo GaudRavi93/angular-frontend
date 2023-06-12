@@ -1,0 +1,143 @@
+<div class="grid">
+	<div class="col-12">
+		<div class="card">
+			<h2 class="mb-6">Registration form</h2>
+			<div class="p-fluid p-formgrid grid" [formGroup]="userForm">
+                <h4 class="field col-12 py-0 my-0">Floating Label</h4>
+                <!-- First Name field -->
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input formControlName="firstname" id="firstname" type="text" pInputText>
+                        <label for="firstname"><span class="p-error">* </span>Firstname</label>
+                    </span>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('firstname')?.hasError('required'))">
+                        * Enter your first name !
+                    </small>
+                </div>
+
+                <!-- Middle Name field -->
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input formControlName="middlename" id="middlename" type="text" pInputText>
+                        <label for="middlename">Middlename</label>
+                    </span>
+                </div>
+
+                <!-- Last Name field -->
+                <div class="field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input formControlName="lastname" id="lastname" type="text" pInputText>
+                        <label for="lastname"><span class="p-error">* </span>Lastname</label>
+                    </span>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('lastname')?.hasError('required'))">
+                        * Enter your last name !
+                    </small>
+                </div>
+
+                <h4 class="field col-12 py-0 my-0">Normal Label</h4>             
+                <!-- Date of Birth fields -->
+                <div class="field col-12 md:col-4">
+                    <label for="DOB"><span class="p-error">* </span>Date of Birth</label>
+                    <p-calendar formControlName="DOB" id="DOB" placeholder="DD/MM/YYYY" dateFormat="dd/mm/yy" [readonlyInput]="true"></p-calendar>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('DOB')?.hasError('required'))">
+                        * Select your birth date !
+                    </small>
+                </div>
+                
+                <!-- Email fields -->
+                <div class="field col-12 md:col-4">
+                    <label for="email"><span class="p-error">* </span>Email</label>
+                    <input formControlName="email" id="email" type="email" pInputText>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('email')?.hasError('required'))">
+                        * Enter valid email address !
+                    </small>
+                </div>
+
+                <!-- Phone fields -->
+                <div class="field col-12 md:col-4">
+                    <label for="phone"><span class="p-error">* </span>Phone</label>
+                    <input formControlName="phone" id="phone" type="text" pInputText>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('phone')?.hasError('required'))">
+                        * Enter 10 digit mobile number !
+                    </small>
+                </div>
+
+                <h4 class="field col-12 py-0 my-0">Dropdown & MultiSelect</h4>            
+                <!-- Education Level fields -->
+                <div class="field col-12 md:col-6">
+                    <label><span class="p-error">* </span>Education Level</label>
+                    <p-dropdown formControlName="educationLevel" [autoDisplayFirst]="false" [options]="educationDropdown" optionLabel="name"></p-dropdown>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('educationLevel')?.hasError('required'))">
+                        * Select your education level !
+                    </small>
+                </div>
+
+                <!-- Multiselect fields -->
+                <div class="field col-12 md:col-6">
+                    <label>Multiselect</label>
+                    <p-multiSelect formControlName="multiselect" [options]="educationDropdown" optionLabel="name" [filter]="false"></p-multiSelect>
+                </div>
+
+                <h4 class="field col-12 py-0 my-0">Textarea</h4>            
+                <!-- Address fields -->
+                <div class="field col-12">
+                    <label for="address"><span class="p-error">* </span>Address</label>
+                    <textarea formControlName="address" id="address" rows="5" cols="30" pInputTextarea></textarea>  
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('address')?.hasError('required'))">
+                        * Enter your address !
+                    </small>
+                </div>
+
+                <h4 class="field col-12 py-0 my-0">Radio Button & Checkbox</h4>                
+                <!-- Gender fields -->
+                <div class="field col-12 md:col-6">
+                    <label for="phone"><span class="p-error">* </span>Gender</label>
+                    <div class="grid formgrid">
+                        <div class="col-12 md:col-4">
+                            <div class="field-radiobutton">
+                                <p-radioButton name="gender" value="male" formControlName="gender" inputId="male"></p-radioButton>
+                                <label for="male">Male</label>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-4">
+                            <div class="field-radiobutton">
+                                <p-radioButton name="gender" value="female" formControlName="gender" inputId="female"></p-radioButton>
+                                <label for="female">Female</label>
+                            </div>
+                        </div>
+                        <div class="col-12 md:col-4">
+                            <div class="field-radiobutton">
+                                <p-radioButton name="gender" value="other" formControlName="gender" inputId="other"></p-radioButton>
+                                <label for="other">Other</label>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('gender')?.hasError('required'))">
+                        * Select your gender !
+                    </small>
+                </div>
+
+                <!-- Hobbies fields -->
+                <div class="field col-12 md:col-6">
+                    <label for="phone"><span class="p-error">* </span>Hobbies</label>
+                    <div class="grid formgrid">
+                        <div class="col-12 md:col-4" *ngFor="let data of hobbies">
+                            <div class="field-checkbox">
+                                <p-checkbox name="group1" (onChange)="checkBoxChange($event, data.value)" [value]="data.value" [inputId]="data.value"></p-checkbox>
+                                <label [for]="data.value">{{data.name}}</label>
+                            </div>
+                        </div>
+                    </div>
+                    <small class="p-error" *ngIf="formSubmitted && (userForm.get('hobbies')?.hasError('required'))">
+                        * Select at least one hobby !
+                    </small>
+                </div>
+
+                <!-- Submit button -->
+                <div class="justify-content-end" style="display: flex; width: 100%;">
+                    <p-button label="Submit" (onClick)="submitUserForm()" icon="pi pi-check" iconPos="right"></p-button>
+                </div>
+			</div>
+		</div>
+	</div>
+</div>

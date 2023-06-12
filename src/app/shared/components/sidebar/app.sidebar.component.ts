@@ -19,7 +19,27 @@ export class AppSidebarComponent implements OnInit {
             {
                 label: 'Home',
                 items: [
-                    { label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/layout/dashboard'] }
+                    {
+                        label: 'Dashboard',
+                        icon: 'pi pi-fw pi-home',
+                        routerLink: ['/layout/dashboard']
+                    },
+                    {
+                        label: 'User',
+                        icon: 'pi pi-fw pi-user',
+                        items: [
+                            {
+                                label: 'User List',
+                                icon: 'pi pi-fw pi-id-card',
+                                // routerLink: ['/layout/user']
+                            },
+                            {
+                                label: 'Add User',
+                                icon: 'pi pi-fw pi-plus',
+                                routerLink: ['/layout/user']
+                            }
+                        ]
+                    }
                 ]
             },
             {
@@ -31,30 +51,24 @@ export class AppSidebarComponent implements OnInit {
                         icon: 'pi pi-fw pi-user',
                         items: [
                             {
-                                label: 'Login',
-                                icon: 'pi pi-fw pi-sign-in',
-                                routerLink: ['/login']
-                            },
-                            {
                                 label: 'Error',
                                 icon: 'pi pi-fw pi-times-circle',
-                                routerLink: ['/error']
+                                // routerLink: ['/error']
                             },
                             {
                                 label: 'Access Denied',
                                 icon: 'pi pi-fw pi-lock',
-                                routerLink: ['/access']
+                                // routerLink: ['/access']
                             }
                         ]
                     },
                     {
                         label: 'Not Found',
                         icon: 'pi pi-fw pi-exclamation-circle',
-                        routerLink: ['/notfound']
+                        // routerLink: ['/notfound']
                     },
                 ]
             }
         ];
     }
 }
-

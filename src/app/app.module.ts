@@ -8,13 +8,15 @@ import { environment } from './../environments/environment';
 import { CoreModule } from './application/core/core.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { UsersComponent } from './application/users/users.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        NotfoundComponent
+        NotfoundComponent,
+        UsersComponent
     ],
     imports: [
         SharedModule,
