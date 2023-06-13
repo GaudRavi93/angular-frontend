@@ -16,15 +16,6 @@ export class ApiInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req.urlWithParams && req.urlWithParams.includes('X-Amz-Algorithm')) {
-      return next.handle(req);
-    }
-
-    const externalParam = req.params.get('external');
-    if (externalParam) {
-      return next.handle(req);
-    }
-
     const httpOptions = {
       'Content-Type': 'application/json',
       Accept: 'application/json',

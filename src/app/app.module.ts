@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -9,14 +10,21 @@ import { CoreModule } from './application/core/core.module';
 import { SharedModule } from './shared/modules/shared.module';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { UsersComponent } from './application/users/users.component';
-import { HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotfoundComponent } from './application/auth/components/notfound/notfound.component';
+import { AccessComponent } from './application/auth/components/access/access.component';
+import { ErrorComponent } from './application/auth/components/error/error.component';
+
+export function tokenGetter() {
+    return localStorage.getItem("idToken");
+}
 
 @NgModule({
     declarations: [
         AppComponent,
         NotfoundComponent,
+        AccessComponent,
+        ErrorComponent,
         UsersComponent
     ],
     imports: [
@@ -25,11 +33,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         BrowserModule,
         AppRoutingModule,
         AngularFireAuthModule,
+        JwtModule.forRoot({
+            config: {tokenGetter: tokenGetter}
+        }),
         BrowserAnimationsModule,
         AngularFireModule.initializeApp(environment.firebaseConfig),
     ],
     providers: [
-        { provide: LocationStrategy, useClass: HashLocationStrategy },
         MessageService
     ],
     bootstrap: [AppComponent]

@@ -5,22 +5,15 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 @Injectable()
 
 export class TokenInterceptor implements HttpInterceptor {
-  constructor() { }
 
   intercept = (request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> => {
     const idToken = localStorage.getItem('idToken');
-    if (request.urlWithParams.includes('X-Amz-Algorithm')) {
-      return next.handle(request);
-    }
     const cloned = request.clone({
-      headers: request.headers.set('Authorization',
-        `Bearer ${idToken}`
-      )
-
+      setHeaders: {
+        Authorization: `Bearer ${idToken}`,
+      },
     });
-
     return next.handle(cloned);
   };
-
 }
   

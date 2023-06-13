@@ -46,6 +46,10 @@ $gutter: 1rem; //for primeflex grid system
     border: none !important;
   }
   
+  .p-menubar > a > i{
+    font-size: 1.5rem !important;
+  }
+
   .p-menubar .p-menubar-root-list {
     width: 300px !important;
   }
@@ -56,7 +60,7 @@ $gutter: 1rem; //for primeflex grid system
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 7rem 2rem 2rem 4rem;
+  padding: 7rem 2rem 2rem 2rem;
   transition: margin-left $transitionDuration;
 }
 

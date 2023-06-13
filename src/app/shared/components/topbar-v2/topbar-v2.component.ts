@@ -24,7 +24,7 @@ export class TopbarV2Component {
       {
         label: 'Dashboard',
         icon: 'pi pi-fw pi-home',
-        routerLink: ['/layout/dashboard']
+        routerLink: ['/dashboard']
       },
       {
         label: 'User',
@@ -33,12 +33,12 @@ export class TopbarV2Component {
           {
             label: 'User List',
             icon: 'pi pi-fw pi-id-card',
-            // routerLink: ['/layout/user']
+            // routerLink: ['/user']
           },
           {
             label: 'Add User',
             icon: 'pi pi-fw pi-plus',
-            routerLink: ['/layout/user']
+            routerLink: ['/user']
           }
         ]
       },
@@ -47,25 +47,19 @@ export class TopbarV2Component {
         icon: 'pi pi-fw pi-briefcase',
         items: [
           {
-            label: 'Auth',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Error',
-                icon: 'pi pi-fw pi-times-circle',
-                // routerLink: ['/error']
-              },
-              {
-                label: 'Access Denied',
-                icon: 'pi pi-fw pi-lock',
-                // routerLink: ['/access']
-              }
-            ]
+            label: 'Error',
+            icon: 'pi pi-fw pi-times-circle',
+            routerLink: ['/error']
+          },
+          {
+            label: 'Access Denied',
+            icon: 'pi pi-fw pi-lock',
+            routerLink: ['/unauthorized']
           },
           {
             label: 'Not Found',
             icon: 'pi pi-fw pi-exclamation-circle',
-            // routerLink: ['/notfound']
+            routerLink: ['/notfound']
           },
         ]
       }
